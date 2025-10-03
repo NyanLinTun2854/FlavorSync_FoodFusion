@@ -71,6 +71,11 @@
                     <h6 class="text-lg font-semibold">Recipe Image</h6>
                     <x-file-input field="image" title="Upload Image" placeholder="No file chosen" :isMandatory="true" />
                 </div>
+                @if ($errors->any())
+                    <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg">
+                        <strong>&#x2022;</strong> {{ collect($errors->all())->last() }}
+                    </div>
+                @endif
                 <button data-slot="button" type="submit"
                     class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all shrink-0 outline-none bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 w-full h-10 rounded-md gap-1.5 px-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"

@@ -134,7 +134,8 @@
         <!-- Our Team -->
         <div class="mb-16">
             <h2 class="text-3xl font-bold text-center mb-12">
-                Our Core Values
+                {{-- Our Core Values --}}
+                Meet Our Team
             </h2>
             <div class="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 <div class="bg-card text-card-foreground flex flex-col rounded-xl border py-6 shadow-sm">

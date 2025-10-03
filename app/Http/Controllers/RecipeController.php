@@ -13,28 +13,17 @@ use Illuminate\Support\Facades\Log;
 
 class RecipeController extends Controller
 {
-    // public function index()
-    // {
-    //     $categories = RecipeCategory::pluck('name', 'id')->toArray();
-
-    //     $difficulty_levels = DifficultyLevel::pluck('name', 'id')->toArray();
-
-    //     $dietary_preference = DietaryPreference::pluck('name', 'id')->toArray();
-
-    //     return view("recipes.index", ["categories" => $categories, "difficulty_levels" => $difficulty_levels, "dietary_preference" => $dietary_preference]);
-    // }
-
     public function index(Request $request)
     {
         $categories = RecipeCategory::pluck('name', 'id')->toArray();
         $difficulty_levels = DifficultyLevel::pluck('name', 'id')->toArray();
         $dietary_preference = DietaryPreference::pluck('name', 'id')->toArray();
 
-        $recipes = Recipe::with(['category', 'difficultyLevel', 'dietaryPreferences'])
+        $recipes = Recipe::with(['category', 'difficultyLevel', 'dietaryPreferences', 'user'])
             ->where('is_approved', '1')
             ->when($request->search_txt, function ($query, $search) {
-                $query->where('name', 'like', "%{$search}%")
-                    ->orWhere('description', 'like', "%{$search}%");
+                $query->where('name', 'like', "%{$search}%");
+                // ->orWhere('description', 'like', "%{$search}%");
             })
             ->when($request->category_id, fn($query, $cat) => $query->where('category_id', $cat))
             ->when($request->difficulty_level_id, fn($query, $diff) => $query->where('difficulty_level_id', $diff))
@@ -93,7 +82,7 @@ class RecipeController extends Controller
             // Handle image upload
             $imagePath = null;
             if (!empty($data['image'])) {
-                $imagePath = $data['image']->store('posts', 'public');
+                $imagePath = $data['image']->store('recipes', 'public');
             }
 
             // Create recipe

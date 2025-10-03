@@ -53,12 +53,13 @@
                         class="lucide lucide-filter h-5 w-5">
                         <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
                     </svg>
-                    <h6 class="txt- font-semibold leading-none">Filter Recipessss</h6>
+                    <h6 class="txt- font-semibold leading-none">Filter Recipes</h6>
                 </div>
 
                 <div class="mb-4 md:mb-8">
-                    <label for="search_txt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Search
-                        Recipes</label>
+                    <label for="search_txt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Search Recipes
+                    </label>
                     <div class="relative mb-6">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -68,19 +69,25 @@
                                 <path d="m21 21-4.3-4.3"></path>
                             </svg>
                         </div>
-                        <input type="text" id="search_txt" name="search_txt"
+                        <input type="text" id="search_txt" name="search_txt" value="{{ request('search_txt') }}" {{-- 👈
+                            persist old value --}}
                             class="bg-inherit border border-input shadow-2xs text-gray-900 text-sm rounded-lg focus:ring-ring/50 focus:border-ring block w-full ps-10 p-2.5"
                             placeholder="Search by recipe name">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-0 mb-4 md:mb-8">
-                    <x-select field="category_id" label="Cuisine Type" :options="$categories" placeholder="All Cuisines"
+                    <x-select field="category_id" label="Cuisine Type" :options="$categories"
+                        :selected="request('category_id')" {{-- 👈 persist --}} placeholder="All Cuisines"
                         width="w-full md:w-auto" :isPlaceholderDisabled="false" />
-                    <x-select field="difficulty_level_id" label="Difficult Level" :options="$difficulty_levels"
-                        placeholder="All Levels" width="w-full md:w-auto" :isPlaceholderDisabled="false" />
-                    <x-select field="dietary_preference_id" label="Difficult Level" :options="$dietary_preference"
-                        placeholder="All Diets" width="w-full md:w-auto" :isPlaceholderDisabled="false" />
+
+                    <x-select field="difficulty_level_id" label="Difficulty Level" :options="$difficulty_levels"
+                        :selected="request('difficulty_level_id')" {{-- 👈 persist --}} placeholder="All Levels"
+                        width="w-full md:w-auto" :isPlaceholderDisabled="false" />
+
+                    <x-select field="dietary_preference_id" label="Dietary Preference" :options="$dietary_preference"
+                        :selected="request('dietary_preference_id')" {{-- 👈 persist --}} placeholder="All Diets"
+                        width="w-full md:w-auto" :isPlaceholderDisabled="false" />
                 </div>
 
                 <div class="flex justify-end">

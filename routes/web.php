@@ -1,11 +1,8 @@
 <?php
 
 use App\Http\Controllers\RecipeApprovalController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommunityController;
-use App\Http\Controllers\CommunityFollowerController;
-use App\Http\Controllers\CommunityLikeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\RecipeController;
@@ -17,7 +14,7 @@ Route::post("/login", [AuthController::class, "login"])->name("login");
 Route::post("/logout", [AuthController::class, "logout"])->name("logout");
 
 Route::get('/', function () {
-    $recipes = Recipe::with(['category', 'difficultyLevel', 'dietaryPreferences'])->latest()->take(3)->get();
+    $recipes = Recipe::with(['category', 'difficultyLevel', 'dietaryPreferences', 'user'])->latest()->take(3)->get();
     return view('welcome', ['recipes' => $recipes]);
 })->name('home');
 
@@ -34,8 +31,6 @@ Route::prefix('recipes')->name('recipes.')->group(function () {
     Route::post('/store', [RecipeController::class, 'store'])->name('store');
 
     Route::get('/{id}', [RecipeController::class, 'show'])->name('show');
-
-
 });
 
 Route::prefix('community')->name('community.')->group(function () {
@@ -67,6 +62,10 @@ Route::get("/resources", function () {
 Route::get("/education", function () {
     return view("educational-resources");
 })->name("education");
+
+Route::get('/privacy', function () {
+    return view('privacy');
+})->name('privacy');
 
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {

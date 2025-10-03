@@ -54,7 +54,6 @@
 <div id="joinUsModal" class="fixed inset-0 hidden flex items-center justify-center bg-black/50 z-50"
     onclick="closeModal('joinUsModal')">
 
-    <!-- stopPropagation prevents closing when clicking inside -->
     <div class="modal-content w-full max-w-md bg-white rounded-lg shadow-lg p-4 
               transform transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
 
@@ -62,14 +61,14 @@
             &times;
         </button>
 
-
-        <!-- Your modal content -->
+        <!-- Modal header -->
         <div class="flex flex-col items-center gap-2 mb-4">
             <h2 class="text-2xl font-bold">Join FoodFusion</h2>
             <p class="text-muted-foreground text-sm text-center">Create your account to start sharing recipes and
                 connecting with fellow food enthusiasts</p>
         </div>
 
+        <!-- Registration form -->
         <form class="space-y-4" action="{{ route('register') }}" method="POST">
             @csrf
 
@@ -87,11 +86,25 @@
             <x-text-input field="password_confirmation" type="password" title="Confirm Password"
                 placeholder="Confirm your password" isMandatory="true" />
 
+            @if ($errors->register->any())
+                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg">
+                    <strong>&#x2022;</strong> {{ collect($errors->register->all())->last() }}
+                </div>
+            @endif
+
             <button data-slot="button" type="submit"
-                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 w-full h-8 rounded-md gap-1 px-3">
+                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 w-full h-10 rounded-md gap-1 px-3">
                 Create Account
             </button>
         </form>
 
+        <!-- Sign in prompt -->
+        <div class="mt-6 text-center text-sm text-gray-600">
+            Already have an account?
+            <a class="text-primary font-medium cursor-pointer hover:underline"
+                onclick="closeModal('joinUsModal'); openModal('signInModal');">
+                Sign in
+            </a>
+        </div>
     </div>
 </div>

@@ -2,6 +2,8 @@
 
 @section('content')
 
+{{-- {{ dd(env('VITE_DEV_SERVER_URL')) }} --}}
+
 <!-- Hero Section -->
 <main>
     <section class="relative py-20 bg-gradient-to-br from-background via-card to-muted">
@@ -292,7 +294,7 @@
                                 class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm mx-2">
                                 <div class="grid md:grid-cols-2 gap-0">
                                     <div class="aspect-video md:aspect-square relative overflow-hidden">
-                                        <img src="http://localhost:3000/vegan-baking-workshop.png"
+                                        <img src="{{ Storage::url('events/Italian_Cooking_Masterclass.jpg') }}"
                                             alt="Italian Cooking Masterclass" class="w-full h-full object-cover">
                                     </div>
                                     <div class="p-8 flex flex-col justify-center">
@@ -349,7 +351,7 @@
                                 class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm mx-2">
                                 <div class="grid md:grid-cols-2 gap-0">
                                     <div class="aspect-video md:aspect-square relative overflow-hidden"><img
-                                            src="http://localhost:3000/vegan-baking-workshop.png"
+                                            src="{{ Storage::url('events/Vegan_Baking_Workshop.jpg') }}"
                                             alt="Vegan Baking Workshop" class="w-full h-full object-cover"></div>
                                     <div class="p-8 flex flex-col justify-center"><span data-slot="badge"
                                             class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90 w-fit mb-4">Upcoming
@@ -400,7 +402,7 @@
                                 class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm mx-2">
                                 <div class="grid md:grid-cols-2 gap-0">
                                     <div class="aspect-video md:aspect-square relative overflow-hidden"><img
-                                            src="http://localhost:3000/vegan-baking-workshop.png"
+                                            src="{{ Storage::url('events/Knife_Skills_Bootcamp.webp') }}"
                                             alt="Knife Skills Bootcamp" class="w-full h-full object-cover"></div>
                                     <div class="p-8 flex flex-col justify-center"><span data-slot="badge"
                                             class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90 w-fit mb-4">Upcoming
@@ -451,7 +453,7 @@
                                 class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm mx-2">
                                 <div class="grid md:grid-cols-2 gap-0">
                                     <div class="aspect-video md:aspect-square relative overflow-hidden"><img
-                                            src="http://localhost:3000/vegan-baking-workshop.png"
+                                            src="{{ Storage::url('events/Farm_to_Table_Experience.webp') }}"
                                             alt="Farm-to-Table Experience" class="w-full h-full object-cover"></div>
                                     <div class="p-8 flex flex-col justify-center"><span data-slot="badge"
                                             class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90 w-fit mb-4">Upcoming

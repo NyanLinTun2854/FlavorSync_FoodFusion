@@ -13,7 +13,7 @@ class RecipeCreateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -34,11 +34,9 @@ class RecipeCreateRequest extends FormRequest
         // Instead of redirecting with the default "errors" bag,
         // we push everything into our custom "toast"
         throw new HttpResponseException(
-            redirect()->back()->with('toast', [
-                'title' => 'Validation Failed!',
-                'type' => 'error',
-                'description' => $validator->errors()->all(), // array of messages
-            ])
+            redirect()->back()
+                ->withErrors($validator) // Laravel's default error bag
+                ->withInput()
         );
     }
 

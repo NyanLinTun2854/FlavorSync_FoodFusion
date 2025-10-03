@@ -24,7 +24,7 @@ class AuthController extends Controller
 
             return redirect()->back()->with('open_signin_modal', true);
         } catch (\Exception $e) {
-            return redirect()->back()
+            return back()
                 ->withErrors(['register' => $e->getMessage()], 'register')
                 ->with('errorBag', 'register');
         }
@@ -55,7 +55,7 @@ class AuthController extends Controller
             return redirect()->back()->with('toast', $toast);
         }
 
-        RateLimiter::hit($key, 30); // lock for 3 minutes
+        RateLimiter::hit($key, 180); // lock for 3 minutes
 
         return back()->withErrors([
             'credentials' => 'Sorry, incorrect credentials',
@@ -75,7 +75,5 @@ class AuthController extends Controller
         ];
 
         return redirect()->back()->with('toast', $toast);
-
-        // return redirect()->back();
     }
 }

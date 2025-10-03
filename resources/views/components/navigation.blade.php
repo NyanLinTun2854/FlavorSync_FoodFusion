@@ -145,7 +145,15 @@
                 Educational Resources
             </a>
 
+
             @auth
+                <div class="flex justify-start mt-4">
+                    <div
+                        class="flex items-center gap-2 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full shadow-sm cursor-pointer">
+                        <span class="font-medium text-gray-800 dark:text-gray-200">{{ Auth::user()->first_name }}</span>
+                        <span class="inline-block w-2 h-2 bg-green-500 rounded-full" title="Online"></span>
+                    </div>
+                </div>
                 <form action="{{ route('logout') }}" method="POST" class="mt-2">
                     @csrf
                     <button type="submit"

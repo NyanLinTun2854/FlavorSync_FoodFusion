@@ -108,13 +108,15 @@
                     Legal
                 </h3>
                 <div class="space-y-2">
-                    <a href="" class="block text-muted-foreground hover:text-primary transition-colors">
+                    <a href="{{ route('privacy') }}"
+                        class="block text-muted-foreground hover:text-primary transition-colors">
                         Privacy Policy
                     </a>
                     <a href="" class="block text-muted-foreground hover:text-primary transition-colors">
                         Terms of Service
                     </a>
-                    <a href="" class="block text-muted-foreground hover:text-primary transition-colors">
+                    <a href="{{ route('privacy') }}"
+                        class="block text-muted-foreground hover:text-primary transition-colors">
                         Cookie Policy
                     </a>
                     <a href="" class="block text-muted-foreground hover:text-primary transition-colors">
